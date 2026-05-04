@@ -15,6 +15,8 @@ $("#addCustomer").click(function () {
     showToast("Customer added successfully");
 });
 
+
+
 function loadCustomers() {
     const tbody = $("#customerTable");
     tbody.empty();
