@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+
+<section id="loginPage">
+    <div class="login-card">
+        <div class="login-logo">
+            <div class="logo-icon">🛒</div>
+            <div>
+                <h1>POS System</h1>
+                <span>Point of Sale</span>
+            </div>
+        </div>
+
+        <h2>Welcome back</h2>
+        <p>Sign in to your account to continue</p>
+
+        <div class="form-group">
+            <label>Username</label>
+            <input id="username" class="form-control" placeholder="Enter username" autocomplete="off">
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input id="password" type="password" class="form-control" placeholder="Enter password">
+        </div>
+
+        <button id="loginBtn" class="btn btn-primary btn-full btn-lg" style="margin-top:8px;">
+            Sign In →
+        </button>
+
+    </div>
+</section>
+
+
+
+
+<section id="dashboard" style="display:none;">
+
+
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <div class="nav-logo-icon">🛒</div>
+            <div>
+                <div class="brand-name">POS System</div>
+                <div class="brand-sub">Point of Sale</div>
+            </div>
+        </div>
+        <div class="navbar-right">
+            <!--<div class="status-badge">
+                <span class="status-dot"></span>
+                <span>Online</span>
+            </div>-->
+            <button id="logoutBtn" class="btn btn-danger">⎋ Logout</button>
+        </div>
+    </nav>
+
+    <div class="dashboard-wrapper">
+
+
+        <aside class="sidebar">
+            <div class="sidebar-label">Navigation</div>
+            <button class="nav-item active" id="customerNav">
+                <span class="nav-icon">👥</span> Customers
+            </button>
+            <button class="nav-item" id="itemNav">
+                <span class="nav-icon">📦</span> Items
+            </button>
+            <button class="nav-item" id="orderNav">
+                <span class="nav-icon">🧾</span> Orders
+            </button>
+        </aside>
+
+
+        <main class="content-area">
+
+
+            <section id="customerSection">
+                <div class="section-header">
+                    <h2>👥 Customers</h2>
+                    <p>Manage your customer records</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">➕ Add New Customer</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Customer ID</label>
+                            <input id="custId" class="form-control" placeholder="e.g. C001">
+                        </div>
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input id="custName" class="form-control" placeholder="e.g. Nimal Perera">
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input id="custAddress" class="form-control" placeholder="e.g. Colombo">
+                        </div>
+                    </div>
+                    <button id="addCustomer" class="btn btn-primary">+ Add Customer</button>
+                </div>
+
+                <div class="card" style="padding:0;">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Address</th>
+                                </tr>
+                            </thead>
+                            <tbody id="customerTable">
+                                <tr>
+                                    <td colspan="3">
+                                        <div class="empty-state">
+                                            <div class="empty-icon">👥</div>
+                                            <p>No customers yet. Add one above.</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+
+            </section>
+
+
+            <section id="itemSection" style="display:none;">
+                <div class="section-header">
+                    <h2>📦 Items</h2>
+                    <p>Manage your product inventory</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">➕ Add New Item</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Item Code</label>
+                            <input id="itemCode" class="form-control" placeholder="e.g. ITM001">
+                        </div>
+                        <div class="form-group">
+                            <label>Item Name</label>
+                            <input id="itemName" class="form-control" placeholder="e.g. Pen">
+                        </div>
+                        <div class="form-group">
+                            <label>Price (Rs.)</label>
+                            <input id="itemPrice" class="form-control" placeholder="e.g. 150.00" type="number">
+                        </div>
+                        <div class="form-group">
+                            <label>Quantity</label>
+                            <input id="itemQty" class="form-control" placeholder="e.g. 100" type="number">
+                        </div>
+                    </div>
+                    <button id="addItem" class="btn btn-success">+ Add Item</button>
+                </div>
+
+                <div class="card" style="padding:0;">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Code</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Qty</th>
+                                </tr>
+                            </thead>
+                            <tbody id="itemTable">
+                                <tr>
+                                    <td colspan="4">
+                                        <div class="empty-state">
+                                            <div class="empty-icon">📦</div>
+                                            <p>No items yet. Add one above.</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+            <section id="orderSection" style="display:none;">
+                <div class="section-header">
+                    <h2>🧾 Orders</h2>
+                    <p>Create and manage customer orders</p>
+                </div>
+
+                <div class="order-layout">
+                    <div>
+                        <div class="card">
+                            <div class="card-title">🛒 New Order</div>
+                            <div class="form-group">
+                                <label>Customer</label>
+                                <select id="orderCustomer" class="form-control">
+                                    <option value="">Select a customer</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Item</label>
+                                <select id="orderItem" class="form-control">
+                                    <option value="">Select an item</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Quantity</label>
+                                <input id="orderQty" class="form-control" placeholder="Enter quantity" type="number" min="1">
+                            </div>
+                            <button id="addToCart" class="btn btn-warning btn-full">+ Add to Cart</button>
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <div class="card" style="padding:0;">
+                            <div style="padding: 16px 20px; border-bottom: 1px solid var(--border);">
+                                <div class="card-title" style="border:none; margin:0; padding:0;">🛒 Cart</div>
+                            </div>
+                            <div class="table-container" style="border:none; border-radius:0;">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Item</th>
+                                            <th>Qty</th>
+                                            <th>Total (Rs.)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="cartTable">
+                                        <tr>
+                                            <td colspan="3">
+                                                <div class="empty-state">
+                                                    <div class="empty-icon">🛒</div>
+                                                    <p>Cart is empty</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div style="padding: 16px 20px;">
+                                <div class="total-display">
+                                    <span class="total-label">Grand Total</span>
+                                    <span class="total-value" id="total">0.00</span>
+                                </div>
+                                <button id="placeOrder" class="btn btn-dark btn-full" style="margin-top:12px; padding:13px;">
+                                    ✔ Place Order
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+        </main>
+    </div>
+</section>
+
+
+<div id="toast-container"></div>
+
+<script src="js/db.js"></script>
+<script src="js/app.js"></script>
+<script src="js/customerController.js"></script>
+<script src="js/itemController.js"></script>
+<script src="js/orderController.js"></script>
+<script src="js/toast.js"></script>
+
+</body>
+</html>
