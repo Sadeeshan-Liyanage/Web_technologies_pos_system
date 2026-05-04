@@ -177,7 +177,22 @@ select.form-control option {
 }
 
 /* ===========================buttons===================== */
-
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+}
 
 .btn:active { transform: scale(0.97); }
 
