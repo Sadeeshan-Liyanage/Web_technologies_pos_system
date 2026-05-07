@@ -26,6 +26,9 @@ $("#addToCart").click(function () {
     showToast(`${item.name} added to cart`);
 });
 
+
+
+
 function loadCart() {
     const tbody = $("#cartTable");
     tbody.empty();
@@ -51,6 +54,7 @@ function loadCart() {
     $("#total").text(grandTotal.toFixed(2));
 }
 
+
 $("#placeOrder").click(function () {
     if (cart.length === 0) {
         showToast("Cart is empty", "warn");
@@ -71,6 +75,7 @@ $("#placeOrder").click(function () {
     };
 
     orders.push(order);
+    save();
     showToast(`Order ${order.id} placed successfully! 🎉`);
 
     cart = [];

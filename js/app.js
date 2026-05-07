@@ -1,8 +1,9 @@
-// ==================LOGIN =========================
+// ==================login =======================================
 $("#loginBtn").click(function () {
     if ($("#username").val() === "admin" && $("#password").val() === "1234") {
         $("#loginPage").fadeOut(300, function () {
             $("#dashboard").fadeIn(300);
+            initApp();
         });
     } else {
         showToast("Invalid username or password", "error");
@@ -23,7 +24,7 @@ $("#logoutBtn").click(function () {
     });
 });
 
-// =============NAVIGATION========================
+
 function switchSection(section) {
     $("#customerSection, #itemSection, #orderSection").hide();
     $(".nav-item").removeClass("active");
@@ -31,6 +32,16 @@ function switchSection(section) {
     $("#" + section + "Nav").addClass("active");
 }
 
+
 $("#customerNav").click(() => switchSection("customer"));
 $("#itemNav").click(() => switchSection("item"));
 $("#orderNav").click(() => switchSection("order"));
+
+function initApp() {
+    loadCustomers();
+    loadCustomerDropdown();
+    loadItems();
+    loadItemDropdown();
+}
+
+

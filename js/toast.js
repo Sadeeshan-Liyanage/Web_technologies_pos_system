@@ -1,4 +1,4 @@
-// =================Toast notification system=================//
+// =================Toast notification system======================================//
 function showToast(message, type = 'success') {
     const icons = { success: '✓', error: '✕', warn: '⚠' };
     const toast = $(`
