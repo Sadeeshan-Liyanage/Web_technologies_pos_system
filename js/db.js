@@ -5,6 +5,7 @@ function loadFromStorage(key, fallback) {
 
 
 function save() {
+    console.log("Saving Customers: ", customers);
     localStorage.setItem('pos_customers', JSON.stringify(customers));
     localStorage.setItem('pos_items',     JSON.stringify(items));
     localStorage.setItem('pos_orders',    JSON.stringify(orders));

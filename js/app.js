@@ -45,3 +45,12 @@ function initApp() {
 }
 
 
+$(document).ready(function() {
+    loadCustomers();
+    loadItems();
+    loadCustomerDropdown();
+    loadItemDropdown();
+
+});
+
+
