@@ -67,6 +67,15 @@ $("#placeOrder").click(function () {
         return;
     }
 
+
+    cart.forEach(cartItem => {
+        const mainItem = items.find(i => i.name === cartItem.name);
+
+        if (mainItem) {
+            mainItem.qty -= cartItem.qty;
+        }
+    });
+
     const order = {
         id: "O" + String(orders.length + 1).padStart(3, "0"),
         customer,
@@ -75,10 +84,21 @@ $("#placeOrder").click(function () {
     };
 
     orders.push(order);
+
+
     save();
+
+
+
+    if (typeof loadItems === "function") {
+        loadItems();
+    }
+
     showToast(`Order ${order.id} placed successfully! 🎉`);
 
     cart = [];
     loadCart();
     $("#orderCustomer, #orderItem").val("").trigger("change");
 });
+
+
